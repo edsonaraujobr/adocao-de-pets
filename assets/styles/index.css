@@ -43,6 +43,84 @@ a {
     transition: .5s;
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    gap: 20px;
+}
+
+.slides {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    height: 80vh;
+    background-color: var(--color-secondary);
+}
+
+.lista-de-pets {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons-pets {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button-add-pet {
+    padding: 5px 20px;
+    background-color: rgb(16, 167, 16);
+    border: none;
+    border-radius: 5px;
+    color: var(--color-white);
+}
+
+.button-add-pet:hover {
+    background-color: rgb(12, 128, 12);
+    transition: .3s;
+}
+
+.filter-button {
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(138, 136, 136);
+}
+
+.filter-search {
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.filter-search:hover {
+    background-color: var(--color-secondary-hover);
+}
+
+.pets {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: white;
+    gap: 10px;
+}
+
+/* exemplo de card */
+.ex-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 400px;
+    width: 280px;
+    border-radius: 5px;
+    background-color: rgb(141, 137, 137);
+}
+
 .footer {
     display: flex;
     flex-direction: row;
