@@ -43,6 +43,49 @@ a {
     transition: .5s;
 }
 
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 80px;
+    width: 100%;
+    background: linear-gradient(to top, var(--color-secondary),var(--color-secondary-hover));
+}
+
+.links-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-links-items {
+    color: var(--color-white);
+}
+
+.link-footer {
+    color: var(--color-primary);
+}
+
+.link-footer:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+    transition: .3s;
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.redes-sociais {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 
 .icon {
     width: 20px;
