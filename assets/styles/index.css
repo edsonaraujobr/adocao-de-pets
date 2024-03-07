@@ -43,6 +43,7 @@ h2 {
     padding: 5px 10px;
     border-radius: 5px;
     color: white;
+    border: none;
 }
 
 .buttonAdote:hover {
@@ -117,7 +118,7 @@ h2 {
     flex-wrap: wrap;
     align-items: center;
     background-color: white;
-    gap: 10px;
+    gap: 20px;
 }
 
 .card {
@@ -134,7 +135,12 @@ h2 {
     width: 280px;
     border-radius: 5px;
     background-color: var(--color-white);
-    border: 1px solid rgba(0, 0, 0, 0.644);
+    border: 1px solid var(--color-primary)
+}
+
+.card:hover {
+    scale: 110%;
+    transition: .3s;
 }
 
 .footer {
