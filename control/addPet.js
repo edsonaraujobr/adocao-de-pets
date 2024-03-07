@@ -41,6 +41,7 @@ buttonSend.addEventListener('click', (e) => {
 
 var petAvailable = []
 const sectionPets = document.getElementsByClassName("pets")[0]
+const filter = document.getElementsByClassName("filter")[0]
 
 class Pet {
     constructor(race, gender, size, state, city, photo) {
@@ -58,33 +59,41 @@ function addNewPet (race,gender,size,state,city, photo) {
     createNewCard()
 }
 
-function createNewCard () {
+window.onload = () => {
+    console.log(localStorage.length)
+    if (localStorage.length > 0 ) {
+        filter.style.display = 'block'
+        
+    }
+    for (var i = 0; i <= localStorage.length; i++) {
+        let chave = localStorage.key(i)
+        let petsAdded = localStorage.getItem(chave)
 
-    sectionPets.innerHTML = '';
-    
-    petAvailable.forEach( pet => {
+        let pet = JSON.parse(petsAdded)
         let div = document.createElement("div")
-        div.classList.add("ex-card")
+        div.classList.add("card")
     
         const race = document.createElement("span")
         race.innerHTML = pet.race
-
+    
         const gender = document.createElement("span")
         gender.innerHTML = pet.gender
-
+    
         const size = document.createElement("span")
         size.innerHTML = pet.size
-
+    
         const state = document.createElement("span")
         state.innerHTML = pet.state
-
+    
         const city = document.createElement("span")
         city.innerHTML = pet.city
-
+    
         const image = document.createElement("img");
         image.src = pet.photo; // Use a URL da foto diretamente
-
-
+        image.style.maxWidth = '250px'
+        image.style.maxHeight = '180px'
+    
+    
         sectionPets.appendChild(div)
         div.appendChild(image)
         div.appendChild(race)
@@ -92,8 +101,48 @@ function createNewCard () {
         div.appendChild(size)
         div.appendChild(state)
         div.appendChild(city)
+    }
+}
 
-        console.log(pet)
-    })
+
+function createNewCard () {
+
+    filter.style.display = 'block'
+    let lastPetAdded = petAvailable[petAvailable.length - 1]
+
+    localStorage.setItem(`Pet${petAvailable.length-1}`,JSON.stringify(lastPetAdded))
+
+    let div = document.createElement("div")
+    div.classList.add("card")
+    
+    const race = document.createElement("span")
+    race.innerHTML = lastPetAdded.race
+
+    const gender = document.createElement("span")
+    gender.innerHTML = lastPetAdded.gender
+
+    const size = document.createElement("span")
+    size.innerHTML = lastPetAdded.size
+
+    const state = document.createElement("span")
+    state.innerHTML = lastPetAdded.state
+
+    const city = document.createElement("span")
+    city.innerHTML = lastPetAdded.city
+
+    const image = document.createElement("img");
+    image.src = lastPetAdded.photo; // Use a URL da foto diretamente
+    image.style.maxWidth = '250px'
+    image.style.maxHeight = '180px'
+
+    sectionPets.appendChild(div)
+    div.appendChild(image)
+    div.appendChild(race)
+    div.appendChild(gender)
+    div.appendChild(size)
+    div.appendChild(state)
+    div.appendChild(city)
+
+
 }
 
