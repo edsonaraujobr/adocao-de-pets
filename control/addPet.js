@@ -1,4 +1,4 @@
-const buttonAddPet = document.getElementsByClassName("button-add-pet")[0]
+const buttonAddPet = document.getElementsByClassName("card-add")[0]
 const modal = document.getElementById("modal-add-pet")
 const buttonCancel = document.getElementById("button-cancel")
 const buttonSave = document.getElementById("button-send")
@@ -171,7 +171,13 @@ function wantAdopt(div, petAdopt) {
     petAvailable.splice(indexToRemove, 1) 
     localStorage.setItem("petAvailable", JSON.stringify(petAvailable)); // atualiza o local storage
     sectionPets.removeChild(div)
+    if (petAvailable.length === 0) {
+        filter.style.display = 'none'
+    }
+
 }
+
+console.log(petAvailable.length)
 
 function setup(objectElement, pet) {  // essa funcao recupera os valores cadastrados e coloca nos newInputs
 
@@ -296,7 +302,12 @@ function editCard(objectElement, pet, event, newObjectElement) {
 window.onload = () => {
     
     if (localStorage.getItem("petAvailable")) {
-        filter.style.display = 'block'
+        
+        if (petAvailable.length === 0) {
+            filter.style.display = 'none'
+        } else {
+            filter.style.display = 'block'
+        }
 
         /* recuperar os pets salvos no navegador */
         const amountPet = localStorage.getItem("petAvailable")

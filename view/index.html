@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/index.css">
+    <link rel="shortcut icon" href="../assets/images/logo.png" type="image/png">
     <title>Quero Adotar</title>
 </head>
 <body>
     <header>
         <div class="header">
-            <a href="index.html"> 
-                <img class="logoimg" src="../assets/images/logo.png" alt="Logo">
-            </a>
+            <div class="header-items-left">
+                <a href="index.html">
+                    <img class="logoimg" src="../assets/images/logo.png" alt="Logo">
+                </a>
+                <h2 class="header-title">QueroAdotar.com</h2>
+            </div>
             <a class="want-adopt" href="#sectionPets">Quero Adotar</a>
         </div>
     </header>
@@ -21,9 +25,6 @@
         </section>
         
         <section class="buttons-pets">
-            <div class="add-pet">
-                <button class="button-add-pet" type="button">Adicionar pet</button>
-            </div>
             <div class="filter">
                 <input class="filter-button" type="text" name="estado" id="iestado" placeholder="Estado">
                 <input class="filter-button" type="text" name="cidade" id="icdade" placeholder="Cidade">
@@ -32,7 +33,10 @@
             </div>
         </section>
         <section class="pets" id="sectionPets">
-
+            <div class="card-add">
+                <h2 class="card-add-title">Adicionar pet para adoção</h2>
+                <img class="card-add-img" src="../assets/images/add.png" alt="adicionar pet">
+            </div>
         </section>
     </main>
     <footer class="footer">
@@ -68,11 +72,11 @@
             
             <input type="text" name="race" id="irace" placeholder="Raça" required minlength="3" maxlength="15">
         
-            <select name="size" id="isize" required>Tamanho:
+            <select class="select" name="size" id="isize" required>Tamanho:
                 <option value="" selected disabled>Tamanho do pet</option>
-                <option value="Pequeno">Pequeno</option>
-                <option value="Médio">Médio</option>
-                <option value="Grande">Grande</option>
+                <option class="option" value="Pequeno">Pequeno</option>
+                <option class="option" value="Médio">Médio</option>
+                <option class="option" value="Grande">Grande</option>
             </select>
             
             <input type="text" name="state" id="istate" placeholder="Estado" required minlength="3" maxlength="15">
@@ -80,13 +84,13 @@
             
             <div>
                 <input type="radio" name="gender" id="imale" value="Macho" required>
-                <label for="imale">Macho</label>
+                <label class="label" for="imale">Macho</label>
 
                 <input type="radio" name="gender" id="ifemale" value="Fêmea">
-                <label for="ifemale">Fêmea</label>
+                <label class="label" for="ifemale">Fêmea</label>
             </div>
             
-            <input type="file" name="photo" id="iphoto" required>
+            <input class="input-file" type="file" name="photo" id="iphoto" required>
 
             <div class="form-button">
                 <button id="button-cancel" type="button">Cancelar</button>
