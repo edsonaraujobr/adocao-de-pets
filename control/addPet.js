@@ -106,25 +106,25 @@ function createElementsCard(newPet) {
     let div = document.createElement("div")
     div.classList.add("card")
     
-    const ElementRace = document.createElement("span")
-    ElementRace.innerHTML = newPet.race
+    const spanRace = document.createElement("span")
+    spanRace.innerHTML = newPet.race
 
-    const ElementGender = document.createElement("span")
-    ElementGender.innerHTML = newPet.gender
+    const spanGender = document.createElement("span")
+    spanGender.innerHTML = newPet.gender
 
-    const ElementSize = document.createElement("span")
-    ElementSize.innerHTML = newPet.size
+    const spanSize = document.createElement("span")
+    spanSize.innerHTML = newPet.size
 
-    const ElementState = document.createElement("span")
-    ElementState.innerHTML = newPet.state
+    const spanState = document.createElement("span")
+    spanState.innerHTML = newPet.state
 
-    const ElementCity = document.createElement("span")
-    ElementCity.innerHTML = newPet.city
+    const spanCity = document.createElement("span")
+    spanCity.innerHTML = newPet.city
 
-    const ElementImage = document.createElement("img");
-    ElementImage.src = newPet.photo; 
-    ElementImage.style.maxWidth = '250px'
-    ElementImage.style.maxHeight = '100px'
+    const imgImage = document.createElement("img");
+    imgImage.src = newPet.photo; 
+    imgImage.style.maxWidth = '250px'
+    imgImage.style.maxHeight = '100px'
 
     const divButtons = document.createElement("div")
     divButtons.classList.add("card-button")
@@ -142,19 +142,20 @@ function createElementsCard(newPet) {
     buttonSetPet.classList.add("button-setUp")  
 
     buttonSetPet.addEventListener('click', function () {
-        setup(ElementRace, ElementGender, ElementSize, ElementState, ElementCity, ElementImage, newPet)
+        const objectElement =  { spanRace, spanGender, spanSize, spanState, spanCity, imgImage }
+        setup(objectElement, newPet)
     })
 
     divButtons.appendChild(buttonSetPet)
     divButtons.appendChild(buttonWantAdopt)
     
     sectionPets.appendChild(div)
-    div.appendChild(ElementImage)
-    div.appendChild(ElementRace)
-    div.appendChild(ElementGender)
-    div.appendChild(ElementSize)
-    div.appendChild(ElementState)
-    div.appendChild(ElementCity)
+    div.appendChild(imgImage)
+    div.appendChild(spanRace)
+    div.appendChild(spanGender)
+    div.appendChild(spanSize)
+    div.appendChild(spanState)
+    div.appendChild(spanCity)
     div.appendChild(divButtons)
 }
 
@@ -172,70 +173,45 @@ function wantAdopt(div, petAdopt) {
     sectionPets.removeChild(div)
 }
 
-// console.log(petAvailable.findIndex(1))
+function setup(objectElement, pet) {  // essa funcao recupera os valores cadastrados e coloca nos newInputs
 
-function setup(ElementRace, ElementGender, ElementSize, ElementState, ElementCity, ElementImage, newPet) {
+    // só não consegui recuperar a foto selecionada
+    const newElementRace = document.getElementById("irace")
+    const newElementSize = document.getElementById("isize")
+    const newElementState = document.getElementById("istate")
+    const newElementCity = document.getElementById("icity")
+    const newElementGender = document.querySelectorAll('input[name="gender"]')
 
-    const thisElementRace = document.getElementById("irace")
-    const thisElementSize = document.getElementById("isize")
-    const thisElementState = document.getElementById("istate")
-    const thisElementCity = document.getElementById("icity")
-    const thisElementPhoto = document.getElementById("iphoto")
-    const thisElementGender = document.querySelectorAll('input[name="gender"]')
-
-    for (let i = 0; i < thisElementSize.options.length; i++) {
-        if (thisElementSize.options[i].value === newPet.size) {
-            thisElementSize.options[i].selected = true
+    for (let i = 0; i < newElementSize.options.length; i++) {
+        if (newElementSize.options[i].value === pet.size) {
+            newElementSize.options[i].selected = true
             break;
         } 
     }
 
-    thisElementRace.value = newPet.race
-    thisElementState.value = newPet.state
-    thisElementCity.value = newPet.city
-    // photo.value = pet.photo
-
-    thisElementGender.forEach(radio => {
-        if(radio.value === newPet.gender) {
+    newElementGender.forEach(radio => {
+        if(radio.value === pet.gender) {
             radio.checked = true
         }
     })
 
+    newElementRace.value = pet.race
+    newElementState.value = pet.state
+    newElementCity.value = pet.city
+
     document.body.style.overflow = 'hidden'
     buttonEdit.style.display = 'block'
 
-    buttonEdit.addEventListener('click', function (e) {
-        
-        thisElementGender.forEach(radio => {
-            if (radio.checked) {
-                thisElementGender.value = radio.value
-            }
-        })
-
-        ElementRace.innerHTML = thisElementRace.value
-        ElementGender.innerHTML = thisElementGender.value
-        ElementSize.innerHTML = thisElementSize.value
-        ElementState.innerHTML = thisElementState.value
-        ElementCity.innerHTML = thisElementCity.value
-
-        ElementRace.value = thisElementRace.value
-        ElementGender.value = thisElementGender.value
-        ElementSize.value = thisElementSize.value
-        ElementState.value = thisElementState.value
-        ElementCity.value = thisElementCity.value
-
-        newPet.race = ElementRace.value
-        newPet.size = ElementSize.value
-        newPet.state = ElementState.value
-        newPet.city = ElementCity.value
-        
-        localStorage.setItem("petAvailable", JSON.stringify(petAvailable)) /* salva o array no storage do navegador */
-
-        e.preventDefault()
-        modal.close()
-        document.body.style.overflow = ''
-        buttonEdit.style.display = 'none'
-        buttonSave.style.display = 'block'
+    buttonEdit.addEventListener('click', function (event) {
+        const newObjectElement = { 
+            race: newElementRace.value, 
+            size: newElementSize.value, 
+            state: newElementState.value, 
+            city: newElementCity.value, 
+            gender: document.querySelectorAll('input[name="gender"]'),
+            photo: document.getElementById("iphoto")
+        }
+        editCard( objectElement, pet, event, newObjectElement)
     })
 
     buttonSave.style.display = 'none'
@@ -243,6 +219,79 @@ function setup(ElementRace, ElementGender, ElementSize, ElementState, ElementCit
 
 }
 
+function editCard(objectElement, pet, event, newObjectElement) {
+
+    // verificar se tem algum genero selecionado
+    let isSelectedGender = false
+    newObjectElement.gender.forEach(radio => {
+        if (radio.checked) {
+            isSelectedGender = true
+        }
+    })
+
+    // verificar se tem imagem selecionada
+    let isSelectedImage;
+    if (newObjectElement.photo.files.length === 0 ) {
+        isSelectedImage = false
+    } else {
+        isSelectedImage = true
+    }
+
+    if(newObjectElement.race.length >= 3 && newObjectElement.state.length >= 3 && newObjectElement.city.length >= 3 && isSelectedGender && isSelectedImage) {
+        event.preventDefault()
+        modal.close()
+        document.body.style.overflow = ''
+        buttonEdit.style.display = 'none'
+        buttonSave.style.display = 'block'
+
+        // achar o index do pet escolhido para editar. Precisa estar aqui pois ja nas linhas seguintes, alteramos o valor do pet
+        const index = petAvailable.findIndex(petIndex => {
+            return petIndex.race ===  pet.race && petIndex.gender === pet.gender && petIndex.size === pet.size &&
+            petIndex.state === pet.state && petIndex.city === pet.city
+        })
+
+        newObjectElement.photo = document.getElementById("iphoto").files[0]
+
+        const reader = new FileReader(); 
+
+        reader.onload = function(event) {
+            const photoURL = event.target.result; 
+            objectElement.imgImage.src = photoURL
+            pet.photo = photoURL
+            console.log(pet.photo)
+            localStorage.setItem("petAvailable", JSON.stringify(petAvailable))
+        };
+
+        reader.readAsDataURL(newObjectElement.photo); 
+
+        newObjectElement.gender.forEach(radio => {
+            if (radio.checked) {
+                objectElement.spanGender.innerHTML = radio.value
+                objectElement.spanGender.value = radio.value
+                pet.gender = radio.value
+            }
+        })
+
+        objectElement.spanRace.innerHTML = newObjectElement.race
+        objectElement.spanState.innerHTML = newObjectElement.state
+        objectElement.spanCity.innerHTML = newObjectElement.city
+        objectElement.spanSize.innerHTML = newObjectElement.size
+
+        objectElement.spanRace.value = newObjectElement.race
+        objectElement.spanState.value = newObjectElement.state
+        objectElement.spanCity.value = newObjectElement.city
+        objectElement.spanSize.value = newObjectElement.size
+
+        pet.race = newObjectElement.race
+        pet.state = newObjectElement.state
+        pet.city = newObjectElement.city
+        pet.size = newObjectElement.size
+
+        petAvailable[index] = pet // substituir no array e colocar o novo pet.
+        
+        localStorage.setItem("petAvailable", JSON.stringify(petAvailable)) /* salva o array no storage do navegador */
+    }
+}
 
 window.onload = () => {
     
@@ -256,7 +305,6 @@ window.onload = () => {
         for (var i = 0; i < arrayPet.length; i++) {
 
             createElementsCard(arrayPet[i])
-
             /* enviar para o array novamente, pois ele esta vazio após recarregar */
             petAvailable.push( new Pet(arrayPet[i].race,arrayPet[i].gender,arrayPet[i].size,arrayPet[i].state,arrayPet[i].city, arrayPet[i].photo) )
 
