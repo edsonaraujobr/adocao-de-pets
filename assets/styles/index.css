@@ -44,6 +44,28 @@ h2 {
     border-radius: 5px;
     color: white;
     border: none;
+    cursor: pointer;
+}
+
+.logoimg {
+    cursor: pointer;
+}
+
+.logoimg:hover {
+    scale: 110%;
+}
+
+.want-adopt {
+    transition: .2s;
+    background-color: var(--color-primary);
+    padding: 5px 10px;
+    color: var(--color-white);
+    border-radius: 5px;
+}
+
+.want-adopt:hover {
+    color: #FFF;
+    background-color: var(--color-primary-hover);
 }
 
 .buttonAdote:hover {
@@ -84,6 +106,7 @@ h2 {
     border: none;
     border-radius: 5px;
     color: var(--color-white);
+    cursor: pointer;
 }
 
 .button-add-pet:hover {
@@ -107,6 +130,7 @@ h2 {
     border: none;
     background-color: var(--color-secondary);
     color: var(--color-white);
+    cursor: pointer;
 }
 
 .filter-search:hover {
@@ -136,6 +160,26 @@ h2 {
     border-radius: 5px;
     background-color: var(--color-white);
     border: 1px solid var(--color-primary)
+}
+
+.card-button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 4px;
+}
+
+.button-setUp {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.button-setUp:hover {
+    background-color: var(--color-secondary-hover);
 }
 
 .card:hover {
@@ -168,9 +212,8 @@ h2 {
 }
 
 .link-footer:hover {
-    color: var(--color-primary-hover);
     text-decoration: underline;
-    transition: .3s;
+    transition: .1s;
 }
 
 .infos {
@@ -220,6 +263,7 @@ dialog {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 #button-cancel:hover {
@@ -233,10 +277,30 @@ dialog {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 #button-send:hover {
     background-color: green;
     transition: .3s;
+}
+
+#button-edit {
+    display: none;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#button-edit:hover {
+    background-color: var(--color-secondary-hover);
+    transition: .3s;
+}
+
+#iphoto {
+    cursor: pointer;
 }
 

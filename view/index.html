@@ -9,8 +9,10 @@
 <body>
     <header>
         <div class="header">
-            <img src="../assets/images/imageUndefined.png" alt="Logo">
-            <a class="buttonAdote" href="sectionPets">Adote</a>
+            <a href="index.html"> 
+                <img class="logoimg" src="../assets/images/logo.png" alt="Logo">
+            </a>
+            <a class="want-adopt" href="#sectionPets">Quero Adotar</a>
         </div>
     </header>
     <main class="main">
@@ -30,7 +32,7 @@
             </div>
         </section>
         <section class="pets" id="sectionPets">
-            
+
         </section>
     </main>
     <footer class="footer">
@@ -54,7 +56,9 @@
                 <a href="#" target="_blank"><img class="icon" src="../assets/images/youtube.png" alt="Youtube"></a>
             </div>
             <div class="logo">
-                <img src="../assets/images/imageUndefined.png" alt="Logo">
+                <a href="index.html">
+                    <img class="logoimg" src="../assets/images/logo.png" alt="Logo">
+                </a>
             </div>
         </div>
     </footer>
@@ -65,9 +69,9 @@
         
             <select name="size" id="isize" required>Tamanho:
                 <option value="" selected disabled>Tamanho do pet</option>
-                <option value="pequeno">Pequeno</option>
-                <option value="medio">Médio</option>
-                <option value="grande">Grande</option>
+                <option value="Pequeno">Pequeno</option>
+                <option value="Médio">Médio</option>
+                <option value="Grande">Grande</option>
             </select>
             
             <input type="text" name="state" id="istate" placeholder="Estado" required minlength="3" maxlength="15">
@@ -85,7 +89,8 @@
 
             <div class="form-button">
                 <button id="button-cancel" type="button">Cancelar</button>
-                <button id="button-send" type="submit">Adicionar Pet</button>
+                <button id="button-send" type="submit">Salvar</button>
+                <button id="button-edit" type="submit">Editar</button>
             </div>
         </form>
     </dialog>
