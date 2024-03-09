@@ -1,0 +1,76 @@
+@media screen and (min-width: 414px) and  (max-width: 660px) {
+    .main {
+        padding: 0px 20px 0px 20px;
+    }
+    
+    .header {
+        padding: 15px 20px;
+    }
+    
+    .logoimg {
+        width: 30px;
+    }
+
+    .header-title {
+        font-size: 0.8em;
+    }
+    .filter {
+        margin-top: 20px;
+    }
+    .filter-button {
+        height: 25px;
+        padding: 5px 5px;
+        margin-top: 5px;
+        width: 40vw;
+    }
+
+    .filter-search {
+        margin-top: 5px;
+        width: 40vw;
+    }
+
+    .card-add {
+        width: 43vw;
+        /* height: 340px; */
+        text-align: center;
+    }
+
+    .buttonAdote {
+        font-size: 0.6em;
+    }
+
+    .button-setUp {
+        font-size: 0.6em;
+    }
+    .pets {
+        gap: 10px;
+    }
+    .card {
+        width: 43vw;
+        /* height: 340px; */
+    }
+    .want-adopt {
+        font-size: 0.6em;
+    }
+
+    .footer {
+        padding: 15px 20px;
+        gap: 3px;
+    }
+
+    .footer-links {
+        gap: 25px;
+    }
+
+    .title-links-items {
+        font-size: 1em;
+    }
+
+    .link-footer {
+        font-size: 0.8em;
+    }
+
+    .icon {
+        width: 15px ;
+    }
+}

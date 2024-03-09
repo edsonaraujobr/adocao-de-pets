@@ -302,12 +302,6 @@ function editCard(objectElement, pet, event, newObjectElement) {
 window.onload = () => {
     
     if (localStorage.getItem("petAvailable")) {
-        
-        if (petAvailable.length === 0) {
-            filter.style.display = 'none'
-        } else {
-            filter.style.display = 'block'
-        }
 
         /* recuperar os pets salvos no navegador */
         const amountPet = localStorage.getItem("petAvailable")
@@ -319,6 +313,12 @@ window.onload = () => {
             /* enviar para o array novamente, pois ele esta vazio após recarregar */
             petAvailable.push( new Pet(arrayPet[i].race,arrayPet[i].gender,arrayPet[i].size,arrayPet[i].state,arrayPet[i].city, arrayPet[i].photo) )
 
+        }
+
+        if (petAvailable.length === 0) {
+            filter.style.display = 'none'
+        } else {
+            filter.style.display = 'block'
         }
     }
     

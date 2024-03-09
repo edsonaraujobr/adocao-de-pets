@@ -1,0 +1,25 @@
+@media screen and (min-width: 1400px) {
+    header {
+        width: 100vw;
+        background: linear-gradient(to right,var(--color-secondary),var(--color-secondary-hover));
+    }
+    .header {
+        margin: auto;
+        width: 1400px;
+        background: none;
+    }
+    .main {
+        margin: auto;
+        width: 1400px;
+    }
+
+    footer {
+        width: 100vw;
+        background: linear-gradient(to right,var(--color-secondary),var(--color-secondary-hover));
+    }
+    .footer {
+        margin: auto;
+        width: 1400px;  
+        background: none;
+    }
+}
