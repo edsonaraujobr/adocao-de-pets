@@ -53,13 +53,18 @@ h2 {
     color: var(--color-primary);
     font-size: 0.9em;
 }
-.buttonAdote {
-    background-color: var(--color-primary);
+.button-adote {
+    background-color: rgb(36, 206, 36);
     padding: 5px 10px;
     border-radius: 5px;
     color: white;
     border: none;
     cursor: pointer;
+}
+
+.button-adote:hover {
+    background-color: rgb(28, 163, 28);
+    transition: .5s;
 }
 
 .logoimg {
@@ -84,10 +89,7 @@ h2 {
     background-color: var(--color-primary-hover);
 }
 
-.buttonAdote:hover {
-    background-color: var(--color-primary-hover);
-    transition: .5s;
-}
+
 
 .main {
     flex: 1;
@@ -211,8 +213,8 @@ h2 {
     gap: 4px;
 }
 
-.button-setUp {
-    background-color: var(--color-secondary);
+.button-setup {
+    background-color: rgb(190, 190, 28);
     color: var(--color-white);
     padding: 5px 10px;
     border-radius: 5px;
@@ -220,8 +222,8 @@ h2 {
     cursor: pointer;
 }
 
-.button-setUp:hover {
-    background-color: var(--color-secondary-hover);
+.button-setup:hover {
+    background-color: rgb(163, 163, 24);
 }
 
 .card:hover {
@@ -368,5 +370,16 @@ dialog {
 
 .input-file {
     cursor: pointer;
+}
+
+.icon-card {
+    width: 20px;
+}
+
+.flex-items-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 

@@ -48,9 +48,8 @@ buttonSave.addEventListener('click', (e) => {
 
     if(race.value != '' && size.value != '' && state.value != '' && city.value != '' && gender.value != '' && photo.value != '') {
         e.preventDefault()
-        modal.close()
-        document.body.style.overflow = ''
 
+        // verifica qual genero selecionado
         let genderSelected
 
         gender.forEach(radio => {
@@ -59,17 +58,43 @@ buttonSave.addEventListener('click', (e) => {
             }
         })
 
+        // transforma a foto
         const reader = new FileReader(); 
 
-        reader.onload = function(event) {
+        reader.onload = function(event) { // funcao assicrona
             const photoURL = event.target.result; 
-            addNewPet(race.value, genderSelected, size.value, state.value, city.value, photoURL); 
+            checkSamePet(race.value, size.value, state.value, city.value, photoURL, genderSelected)
         };
 
         reader.readAsDataURL(photo); 
-
     }   
 })
+
+function checkSamePet (race, size, state, city, photoURL, genderSelected) {
+
+    // verifica se ja tem algum pet dentro do array com as mesmas caracteristicas.
+    const amountPet = localStorage.getItem("petAvailable")
+    var arrayPet = JSON.parse(amountPet) 
+    let isEquals = false
+
+    if (localStorage.getItem("petAvailable")) {
+
+        arrayPet.forEach(pet => {
+            if (pet.race === race && pet.size === size && pet.state === state && pet.city === city && pet.gender === genderSelected && pet.photo === photoURL) {
+                console.log('iguais')
+                isEquals =  true
+            }
+        })
+    }
+
+    if (!isEquals) {
+        modal.close()
+        document.body.style.overflow = ''
+        addNewPet(race, genderSelected, size, state, city, photoURL); 
+    } else {
+        console.log('existe um igual') 
+    }
+}
 
 /* ___________________________________________________________________ */
 
@@ -106,20 +131,70 @@ function createElementsCard(newPet) {
     let div = document.createElement("div")
     div.classList.add("card")
     
+    let divRace = document.createElement("div")
+    divRace.classList.add("flex-items-card")
+
     const spanRace = document.createElement("span")
     spanRace.innerHTML = newPet.race
+
+    const iconRace = document.createElement("img")
+    iconRace.src = '../assets/images/raca-icon.png'
+    iconRace.classList.add("icon-card")
+
+    divRace.appendChild(iconRace)
+    divRace.appendChild(spanRace)
+
+    let divGender = document.createElement("div")
+    divGender.classList.add("flex-items-card")
+
+    const iconGender = document.createElement("img")
+    iconGender.src = '../assets/images/genero-icon.png'
+    iconGender.classList.add("icon-card")
 
     const spanGender = document.createElement("span")
     spanGender.innerHTML = newPet.gender
 
+    divGender.appendChild(iconGender)
+    divGender.appendChild(spanGender)
+
+    let divSize = document.createElement("div")
+    divSize.classList.add("flex-items-card")
+
+    const iconSize = document.createElement("img")
+    iconSize.src = '../assets/images/tamanho-icon.png'
+    iconSize.classList.add("icon-card")
+
     const spanSize = document.createElement("span")
     spanSize.innerHTML = newPet.size
+
+    divSize.appendChild(iconSize)
+    divSize.appendChild(spanSize)
+
+    const iconState = document.createElement("img")
+    iconState.src = '../assets/images/localizacao-icon.png'
+    iconState.classList.add("icon-card")
+
+    let divState = document.createElement("div")
+    divState.classList.add("flex-items-card")
 
     const spanState = document.createElement("span")
     spanState.innerHTML = newPet.state
 
+    divState.appendChild(iconState)
+    divState.appendChild(spanState)
+
+    const iconCity = document.createElement("img")
+    iconCity.src = '../assets/images/localizacao-icon.png'
+    iconCity.classList.add("icon-card")
+
+    let divCity = document.createElement("div")
+    divCity.classList.add("flex-items-card")
+
     const spanCity = document.createElement("span")
     spanCity.innerHTML = newPet.city
+
+    divCity.appendChild(iconCity)
+    divCity.appendChild(spanCity)
 
     const imgImage = document.createElement("img");
     imgImage.src = newPet.photo; 
@@ -131,7 +206,7 @@ function createElementsCard(newPet) {
 
     const buttonWantAdopt = document.createElement("button")
     buttonWantAdopt.innerHTML = 'Quero Adotar'
-    buttonWantAdopt.classList.add("buttonAdote")
+    buttonWantAdopt.classList.add("button-adote")
 
     buttonWantAdopt.addEventListener('click', function() {
         wantAdopt(div, newPet)
@@ -139,7 +214,7 @@ function createElementsCard(newPet) {
 
     const buttonSetPet = document.createElement("button")
     buttonSetPet.innerHTML = 'Editar'
-    buttonSetPet.classList.add("button-setUp")  
+    buttonSetPet.classList.add("button-setup")  
 
     buttonSetPet.addEventListener('click', function () {
         const objectElement =  { spanRace, spanGender, spanSize, spanState, spanCity, imgImage }
@@ -151,11 +226,11 @@ function createElementsCard(newPet) {
     
     sectionPets.appendChild(div)
     div.appendChild(imgImage)
-    div.appendChild(spanRace)
-    div.appendChild(spanGender)
-    div.appendChild(spanSize)
-    div.appendChild(spanState)
-    div.appendChild(spanCity)
+    div.appendChild(divRace)
+    div.appendChild(divGender)
+    div.appendChild(divSize)
+    div.appendChild(divState)
+    div.appendChild(divCity)
     div.appendChild(divButtons)
 }
 
@@ -301,7 +376,7 @@ function editCard(objectElement, pet, event, newObjectElement) {
 
 window.onload = () => {
     
-    if (localStorage.getItem("petAvailable")) {
+    if (localStorage.getItem("petAvailable")) { // verifica se tem algo salvo
 
         /* recuperar os pets salvos no navegador */
         const amountPet = localStorage.getItem("petAvailable")
@@ -315,6 +390,7 @@ window.onload = () => {
 
         }
 
+        // achei redondante
         if (petAvailable.length === 0) {
             filter.style.display = 'none'
         } else {

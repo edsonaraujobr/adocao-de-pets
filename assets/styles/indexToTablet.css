@@ -1,4 +1,4 @@
-@media screen and (min-width: 414px) and  (max-width: 660px) {
+@media screen and (max-width: 660px) {
     .main {
         padding: 0px 20px 0px 20px;
     }
@@ -35,11 +35,11 @@
         text-align: center;
     }
 
-    .buttonAdote {
+    .button-adote {
         font-size: 0.6em;
     }
 
-    .button-setUp {
+    .button-setup {
         font-size: 0.6em;
     }
     .pets {
