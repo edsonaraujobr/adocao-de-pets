@@ -43,10 +43,14 @@ buttonSave.addEventListener('click', (e) => {
     const size = document.getElementById("isize")
     const state = document.getElementById("istate")
     const city = document.getElementById("icity")
-    const photo = document.getElementById("iphoto").files[0]
+    let photo = document.getElementById("iphoto")
     const gender = document.querySelectorAll('input[name="gender"]')
 
-    if(race.value != '' && size.value != '' && state.value != '' && city.value != '' && gender.value != '' && photo.value != '') {
+    console.log(`photo: ${verifyIfHasImageSelected(photo)}`)
+    console.log(`gender: ${verifyIfHasGenderSelected(gender)}`)
+
+    if(race.value.length >= 3 && size.value.length >= 3 && state.value.length >= 3 && city.value.length >= 3 && verifyIfHasImageSelected(photo) && verifyIfHasGenderSelected(gender)) {
+        console.log('entrou')
         e.preventDefault()
 
         // verifica qual genero selecionado
@@ -58,10 +62,12 @@ buttonSave.addEventListener('click', (e) => {
             }
         })
 
+        photo = document.getElementById("iphoto").files[0]
+
         // transforma a foto
         const reader = new FileReader(); 
 
-        reader.onload = function(event) { // funcao assicrona
+        reader.onload = function(event) { // funcao assincrona
             const photoURL = event.target.result; 
             checkSamePet(race.value, size.value, state.value, city.value, photoURL, genderSelected)
         };
@@ -240,19 +246,19 @@ function wantAdopt(div, petAdopt) {
 
     const indexToRemove = arrayPet.findIndex(pet => {
         return pet.race ===  petAdopt.race && pet.gender === petAdopt.gender && pet.size === petAdopt.size &&
-        pet.state === petAdopt.state && pet.city === petAdopt.city
+        pet.state === petAdopt.state && pet.city === petAdopt.city && pet.photo === petAdopt.photo
     })
 
     petAvailable.splice(indexToRemove, 1) 
+
     localStorage.setItem("petAvailable", JSON.stringify(petAvailable)); // atualiza o local storage
     sectionPets.removeChild(div)
+
     if (petAvailable.length === 0) {
         filter.style.display = 'none'
     }
 
 }
-
-console.log(petAvailable.length)
 
 function setup(objectElement, pet) {  // essa funcao recupera os valores cadastrados e coloca nos newInputs
 
@@ -300,25 +306,30 @@ function setup(objectElement, pet) {  // essa funcao recupera os valores cadastr
 
 }
 
-function editCard(objectElement, pet, event, newObjectElement) {
+function verifyIfHasImageSelected (photo) {
+    let isSelected = false
+    // verificar se tem imagem selecionada
+    if (photo && photo.files && photo.files.length > 0 ) {
+        isSelected =  true
+    } 
+    return isSelected
+}
 
+function verifyIfHasGenderSelected (gender) {
+    let isSelected = false
     // verificar se tem algum genero selecionado
-    let isSelectedGender = false
-    newObjectElement.gender.forEach(radio => {
+    gender.forEach(radio => {
         if (radio.checked) {
-            isSelectedGender = true
+            isSelected = true
         }
     })
+    return isSelected
+}
 
-    // verificar se tem imagem selecionada
-    let isSelectedImage;
-    if (newObjectElement.photo.files.length === 0 ) {
-        isSelectedImage = false
-    } else {
-        isSelectedImage = true
-    }
+function editCard(objectElement, pet, event, newObjectElement) {
 
-    if(newObjectElement.race.length >= 3 && newObjectElement.state.length >= 3 && newObjectElement.city.length >= 3 && isSelectedGender && isSelectedImage) {
+    if(newObjectElement.race.length >= 3 && newObjectElement.state.length >= 3 && newObjectElement.city.length >= 3 && verifyIfHasImageSelected(newObjectElement.photo) && verifyIfHasGenderSelected(newObjectElement.gender)) {
+        console.log('entrou no edit')
         event.preventDefault()
         modal.close()
         document.body.style.overflow = ''
