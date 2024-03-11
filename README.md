@@ -1,7 +1,7 @@
 # Sobre 🔍
 
 Este projeto foi desenvolvido durante o Módulo 02 dos <strong>Programadores do Amanha</strong>. A proposta era a criação de um sistema de cadastro no qual era possível
-criar, editar e deletar o dado usando as tecnologias HTML, CSS e JavaScript.
+<strong>criar, editar e deletar</strong> o dado usando as tecnologias HTML, CSS e JavaScript.
 
 Criei então, uma página de adoção de pets, no qual você pode adicionar um novo pet com a raça dele, o tamanho, o gênero, a cidade e o estado. Todos estes dados são obrigatórios
 e foquei bastante na parte de validação de dados, utilizei o comportamento do fórmulário além de verificações para strings vazias.
@@ -17,7 +17,7 @@ Foi um projeto desafiador e por fim, gostaria de implementa-lo nele em um futuro
 ![Captura de tela de 2024-03-11 15-16-09](https://github.com/edsonaraujoneto/cadastro-de-dados-pda/assets/137104822/c5c81834-7a7b-40d7-93a5-682639a54ce2)
 
 
-Para visualizar, [clique aqui]([https://edsonblocodenotas.netlify.app/](https://edsonaraujoneto.github.io/cadastro-de-dados-pda/))
+Para visualizar, [clique aqui](https://edsonaraujoneto.github.io/cadastro-de-dados-pda/)
 
 
 # Tecnologias Utilizadas 🖥
