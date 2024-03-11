@@ -521,3 +521,5 @@ function empty() {
     createToast(type,  title, text);
 }
 
+console.log('Hey Dev, não precisa ver o código por aqui, disponibilizo ele no meu perfil do GitHub, é só clicar: https://github.com/edsonaraujoneto/cadastro-de-dados-pda');
+
