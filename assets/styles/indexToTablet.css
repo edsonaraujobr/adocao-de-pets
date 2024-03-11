@@ -49,6 +49,10 @@
         width: 43vw;
         /* height: 340px; */
     }
+    .toast {
+        width: 300px;
+        font-size: 0.8em  
+    }
     .want-adopt {
         font-size: 0.6em;
     }

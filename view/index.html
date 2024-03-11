@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/styles/index.css">
+    <link rel="stylesheet" href="../assets/styles/toast.css">
     <link rel="stylesheet" href="../assets/styles/indexToMobile.css">
     <link rel="stylesheet" href="../assets/styles/indexToTablet.css">
     <link rel="stylesheet" href="../assets/styles/indexToScreenLarge.css">
@@ -11,6 +12,10 @@
     <title>Quero Adotar</title>
 </head>
 <body>
+    <div id="notification">
+
+    </div>
+    
     <header>
         <div class="header">
             <div class="header-items-left">
@@ -75,7 +80,7 @@
     <dialog id="modal-add-pet">
         <form class="form-add-pet" method="post" autocomplete="off">
             
-            <input type="text" name="race" id="irace" placeholder="Raça" required minlength="3" maxlength="15">
+            <input type="text" name="race" id="irace" placeholder="Raça" required minlength="3" maxlength="25">
         
             <select class="select" name="size" id="isize" required>Tamanho:
                 <option value="" selected disabled>Tamanho do pet</option>
@@ -84,8 +89,8 @@
                 <option class="option" value="Grande">Grande</option>
             </select>
             
-            <input type="text" name="state" id="istate" placeholder="Estado" required minlength="3" maxlength="15">
-            <input type="text" name="city" id="icity" placeholder="Cidade" required minlength="3" maxlength="15">
+            <input type="text" name="state" id="istate" placeholder="Estado" required minlength="3" maxlength="25">
+            <input type="text" name="city" id="icity" placeholder="Cidade" required minlength="3" maxlength="25">
             
             <div>
                 <input type="radio" name="gender" id="imale" value="Macho" required>
