@@ -166,7 +166,7 @@ function createElementsCard(newPet) {
     spanRace.innerHTML = newPet.race
 
     const iconRace = document.createElement("img")
-    iconRace.src = '../assets/images/raca-icon.png'
+    iconRace.src = 'assets/images/raca-icon.png'
     iconRace.classList.add("icon-card")
 
     divRace.appendChild(iconRace)
@@ -176,7 +176,7 @@ function createElementsCard(newPet) {
     divGender.classList.add("flex-items-card")
 
     const iconGender = document.createElement("img")
-    iconGender.src = '../assets/images/genero-icon.png'
+    iconGender.src = 'assets/images/genero-icon.png'
     iconGender.classList.add("icon-card")
 
     const spanGender = document.createElement("span")
@@ -189,7 +189,7 @@ function createElementsCard(newPet) {
     divSize.classList.add("flex-items-card")
 
     const iconSize = document.createElement("img")
-    iconSize.src = '../assets/images/tamanho-icon.png'
+    iconSize.src = 'assets/images/tamanho-icon.png'
     iconSize.classList.add("icon-card")
 
     const spanSize = document.createElement("span")
@@ -199,7 +199,7 @@ function createElementsCard(newPet) {
     divSize.appendChild(spanSize)
 
     const iconState = document.createElement("img")
-    iconState.src = '../assets/images/localizacao-icon.png'
+    iconState.src = 'assets/images/localizacao-icon.png'
     iconState.classList.add("icon-card")
 
     let divState = document.createElement("div")
@@ -212,7 +212,7 @@ function createElementsCard(newPet) {
     divState.appendChild(spanState)
 
     const iconCity = document.createElement("img")
-    iconCity.src = '../assets/images/localizacao-icon.png'
+    iconCity.src = 'assets/images/localizacao-icon.png'
     iconCity.classList.add("icon-card")
 
     let divCity = document.createElement("div")
