@@ -1,17 +1,6 @@
 # Sobre 🔍
 
-Este projeto foi desenvolvido durante o Módulo 02 dos <strong>Programadores do Amanhã</strong>. A proposta era a criação de um sistema de cadastro no qual era possível
-<strong>criar, editar e deletar</strong> o dado usando as tecnologias HTML, CSS e JavaScript.
-
-Criei então, uma página de adoção de pets no qual você pode adicionar um novo pet com a raça dele, o tamanho, o gênero, a cidade, o estado e a imagem. Todos estes dados são obrigatórios.
-
-Foquei bastante na parte de validação de dados, utilizei o comportamento do fórmulário além de verificações para strings vazias.
-
-Caso o usuário clique em adotar, é retirado as informações daquele pet no array e do storage do navegador(uma API que utilizei para a persistência dos dados).
-
-Caso o usuário clique em editar, é verificado se já existe um pet com aquelas mesmas informações, incluido a foto( o exato caminho ), se sim, nada é feito. Se não, o pet é editado.
-
-Foi um projeto desafiador e por fim, gostaria de implementa-lo nele em um futuro próximo um filtro e uma seção de slides para incentivar a adoção.
+...
 
 # Execução 🎬
 
